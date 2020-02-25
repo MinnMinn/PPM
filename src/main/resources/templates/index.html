@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 th:text=${msg}></h1>
+	<h1 th:text=${fail}></h1>
+	<h1 th:text=${success}></h1>
+	<form th:action="@{/city}" method="post">
+		<input name="name" type="text" /> <input type="submit" value="Search" />
+	</form>
+	<form th:action="@{/search}" method="post">
+		<input name="ten" type="text" /> <input type="submit" value="Filter" />
+	</form>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Temp</th>
+			<th>Main</th>
+			<th>Humidity</th>
+			<th>Pressure</th>
+			<th>Action</th>
+		</tr>
+		<tr th:each="a : ${list}">
+			<td th:text="${a.Name}">Name</td>
+			<td th:text="${a.Temp}">Temp</td>
+			<td th:text="${a.Main}">Main</td>
+			<td th:text="${a.Humidity}">Humidity</td>
+			<td th:text="${a.Pressure}">Pressure</td>
+			<td><a th:href="@{/delete/} + ${a.id}">Delete</a></td>
+		</tr>
+	</table>
+</body>
+</html>
